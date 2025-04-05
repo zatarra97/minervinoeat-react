@@ -4,7 +4,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Login from './Pages/Auth/Login'
 import Register from './Pages/Auth/Register'
 import './App.css'
-
+import RestaurantDetails from './Pages/RestaurantDetail'
 const App: React.FC = () => {
   return (
     <Router>
@@ -12,6 +12,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/accesso/login" element={<Login />} />
         <Route path="/accesso/registrati" element={<Register />} />
+        <Route path="/dettaglio/:id" element={<RestaurantDetails />} />
       </Routes>
     </Router>
   )

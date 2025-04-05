@@ -9,4 +9,13 @@ export interface Restaurant {
   deliveryFee: string;
   minOrder: number;
   category: string;
+  menu: MenuItem[];
 } 
+
+export interface MenuItem {
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+}
+

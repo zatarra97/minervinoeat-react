@@ -28,7 +28,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 234,
     deliveryFee: '€2.50',
     minOrder: 10.00,
-    category: 'pizzeria'
+    category: 'pizzeria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '2',
@@ -40,7 +48,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 187,
     deliveryFee: '€3.00',
     minOrder: 15.00,
-    category: 'pasticceria'
+    category: 'pasticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '3',
@@ -52,7 +68,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 142,
     deliveryFee: '€3.50',
     minOrder: 12.00,
-    category: 'rosticceria'
+    category: 'rosticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '4',
@@ -64,7 +88,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '25-35 min',
     deliveryFee: '€3.00',
     minOrder: 18,
-    distance: '1.7 km'
+    distance: '1.7 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '5',
@@ -76,7 +108,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '15-25 min',
     deliveryFee: '€2.00',
     minOrder: 12,
-    distance: '1.1 km'
+    distance: '1.1 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '6',
@@ -88,7 +128,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '20-30 min',
     deliveryFee: '€2.50',
     minOrder: 8,
-    distance: '2.0 km'
+    distance: '2.0 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '7',
@@ -100,7 +148,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 234,
     deliveryFee: '€2.50',
     minOrder: 10.00,
-    category: 'pizzeria'
+    category: 'pizzeria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '8',
@@ -112,7 +168,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 187,
     deliveryFee: '€3.00',
     minOrder: 15.00,
-    category: 'pasticceria'
+    category: 'pasticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '9',
@@ -124,7 +188,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 142,
     deliveryFee: '€3.50',
     minOrder: 12.00,
-    category: 'rosticceria'
+    category: 'rosticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '10',
@@ -136,7 +208,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '25-35 min',
     deliveryFee: '€3.00',
     minOrder: 18,
-    distance: '1.7 km'
+    distance: '1.7 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '11',
@@ -148,7 +228,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '15-25 min',
     deliveryFee: '€2.00',
     minOrder: 12,
-    distance: '1.1 km'
+    distance: '1.1 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '12',
@@ -160,7 +248,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '20-30 min',
     deliveryFee: '€2.50',
     minOrder: 8,
-    distance: '2.0 km'
+    distance: '2.0 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '13',
@@ -172,7 +268,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '20-30 min',
     deliveryFee: '€2.50',
     minOrder: 8,
-    distance: '2.0 km'
+    distance: '2.0 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '14',
@@ -184,7 +288,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 234,
     deliveryFee: '€2.50',
     minOrder: 10.00,
-    category: 'pizzeria'
+    category: 'pizzeria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '15',
@@ -196,7 +308,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 187,
     deliveryFee: '€3.00',
     minOrder: 15.00,
-    category: 'pasticceria'
+    category: 'pasticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '16',
@@ -208,7 +328,15 @@ export const restaurants: Restaurant[] = [
     reviewCount: 142,
     deliveryFee: '€3.50',
     minOrder: 12.00,
-    category: 'rosticceria'
+    category: 'rosticceria',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '17',
@@ -220,7 +348,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '25-35 min',
     deliveryFee: '€3.00',
     minOrder: 18,
-    distance: '1.7 km'
+    distance: '1.7 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '18',
@@ -232,7 +368,15 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '15-25 min',
     deliveryFee: '€2.00',
     minOrder: 12,
-    distance: '1.1 km'
+    distance: '1.1 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   },
   {
     id: '19',
@@ -244,6 +388,14 @@ export const restaurants: Restaurant[] = [
     deliveryTime: '20-30 min',
     deliveryFee: '€2.50',
     minOrder: 8,
-    distance: '2.0 km'
+    distance: '2.0 km',
+    menu: [
+      {
+        name: 'Pizza Margherita',
+        description: 'Pomodoro, mozzarella, basilico',
+        price: 5.00,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+      }
+    ]
   }
 ]; 
