@@ -22,7 +22,7 @@ export default function Homepage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header con logo, ricerca e accesso */}
       <header className="sticky top-0 z-10 bg-white border-b border-orange-500 shadow-sm">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto md:px-4 px-2">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <h1 className="text-2xl font-bold text-orange-600 flex-shrink-0">
@@ -55,7 +55,7 @@ export default function Homepage() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-4 md:py-8">
+      <div className="container mx-auto md:px-4 px-2 py-4 md:py-8">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Sidebar con filtri - sticky */}
           <div className="md:w-64 flex-shrink-0">
@@ -82,7 +82,7 @@ export default function Homepage() {
                 <p className="text-gray-400 mt-2">Prova a modificare i filtri di ricerca</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:gap-6 gap-3">
                 {filteredRestaurants.map(restaurant => (
                   <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                 ))}

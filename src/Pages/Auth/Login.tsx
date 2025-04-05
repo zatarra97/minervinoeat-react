@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginFormData } from '../../Components/Form/ValidationSchemas/auth.schema';
 import { TextField } from '../../Components/Form/Fields/TextField';
 import { cognitoService } from '../../services/cognito';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -71,7 +73,12 @@ export default function Login() {
             className="w-full btn btn-orange mt-5"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Accesso in corso...' : 'Accedi'}
+            {isSubmitting ? (
+              <>
+                <FontAwesomeIcon icon={faSpinner} spin className="mr-2" />
+                Accesso in corso
+              </>
+            ) : 'Accedi'}
           </button>
           <p className="text-center text-gray-600 mt-2">
             Non hai un account?{' '}

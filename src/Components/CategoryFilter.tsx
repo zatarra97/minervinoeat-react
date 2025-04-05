@@ -22,7 +22,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   };
 
   return (
-    <div className="bg-white special-rounded shadow-sm">
+    <div className="bg-white rounded-lg md:rounded-none special-rounded shadow-sm">
       {/* Header sempre visibile */}
       <button 
         onClick={() => setIsOpen(!isOpen)}

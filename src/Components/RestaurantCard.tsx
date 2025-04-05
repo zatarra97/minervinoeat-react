@@ -14,7 +14,7 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
         <img 
           src={restaurant.image} 
           alt={restaurant.name}
-          className="w-full h-48 object-cover hover:scale-105 transition-all duration-300"
+          className="w-full h-36 md:h-48 object-cover hover:scale-105 transition-all duration-300"
         />
         <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium shadow flex items-center gap-1">
           <FontAwesomeIcon icon={faClock} className="text-orange-500" />
