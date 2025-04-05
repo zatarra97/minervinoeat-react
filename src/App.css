@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+.special-rounded {
+  border-radius: 40px 15px 40px 15px;
+}
+
+.special-rounded-small {
+    border-radius: 40px 15px 40px 15px;
+}
+
+.btn{
+    border-radius: 40px 20px 40px 20px;
+    @apply  px-6 py-2 font-medium cursor-pointer;
+}
+
+.btn-orange {
+    @apply flex-shrink-0 bg-orange-500 hover:bg-orange-600 text-white transition-colors
+}
+.btn-orange-wire{
+    @apply flex-shrink-0 bg-white border border-orange-500 hover:bg-orange-200 text-orange-500 transition-colors
+}

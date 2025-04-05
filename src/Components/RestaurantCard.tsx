@@ -9,7 +9,7 @@ interface RestaurantCardProps {
 
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group-hover:scale-105 cursor-pointer">
+    <div className="bg-white special-rounded shadow-md overflow-hidden hover:shadow-lg transition-shadow group-hover:scale-105 cursor-pointer">
       <div className="relative">
         <img 
           src={restaurant.image} 
@@ -44,7 +44,7 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
         </div>
 
         <div className="mt-3">
-          <span className="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+          <span className="inline-block bg-orange-100 text-orange-800 text-xs px-2 py-1 special-rounded-small min-w-20 text-center">
             {restaurant.category}
           </span>
         </div>
