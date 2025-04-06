@@ -8,6 +8,8 @@ import RestaurantDetails from './Pages/RestaurantDetail'
 import { Footer } from './Components/Footer'
 import OrderConfirmation from './Pages/OrderConfirmation/OrderConfirmation'
 import Orders from './Pages/Orders/Orders'
+import ProfilePage from './Pages/Personal/Profile'
+import NotFound from './Pages/NotFound/NotFound'
 
 const App: React.FC = () => {
   return (
@@ -19,6 +21,8 @@ const App: React.FC = () => {
         <Route path="/dettaglio/:id" element={<RestaurantDetails />} />
         <Route path="/conferma-ordine" element={<OrderConfirmation />} />
         <Route path="/ordini" element={<Orders />} />
+        <Route path="/profilo" element={<ProfilePage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
