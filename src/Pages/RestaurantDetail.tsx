@@ -1,9 +1,10 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faClock, faEuroSign, faArrowLeft, faShoppingCart, faPlus, faMinus, faTrash, faTimes, faBicycle, faStore } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faClock, faEuroSign, faShoppingCart, faPlus, faMinus, faTrash, faTimes, faBicycle, faStore } from '@fortawesome/free-solid-svg-icons';
 import { restaurants } from '../data/restaurants';
 import { useState } from 'react';
 import { MenuItem } from '../types/restaurant';
+import { Navbar } from '../Components/Navbar/Navbar';
 
 interface CartItem extends MenuItem {
   quantity: number;
@@ -50,12 +51,11 @@ export default function RestaurantDetail() {
 
   if (!restaurant) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">Ristorante non trovato</h2>
-        <Link to="/" className="btn btn-orange">
-          <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-          Torna alla home
-        </Link>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar isSticky={false} />
+        <div className="flex flex-col items-center justify-center p-4">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Ristorante non trovato</h2>
+        </div>
       </div>
     );
   }
@@ -68,7 +68,7 @@ export default function RestaurantDetail() {
     }`}>
       <div className="bg-white p-4 rounded-lg shadow-sm h-full overflow-y-auto py-5">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-center w-full mt-3">Il tuo ordine</h2>
+          <h2 className="text-2xl font-bold text-center w-full mt-3">Il tuo ordine</h2>
           {isCartOpen && (
             <button onClick={() => setIsCartOpen(false)} className="text-gray-500">
               <FontAwesomeIcon icon={faTimes} />
@@ -115,7 +115,7 @@ export default function RestaurantDetail() {
               {cart.map((item) => (
                 <div key={item.name} className="flex justify-between items-center">
                   <div>
-                    <h3 className="font-medium">{item.name}</h3>
+                    <h3 className="font-medium text-lg">{item.name}</h3>
                     <p className="text-sm text-gray-500">€{item.price.toFixed(2)}</p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ export default function RestaurantDetail() {
                 </div>
               </div>
               <button 
-                className={`w-full btn btn-orange mb-15 md:mb-0 ${
+                className={`w-full btn btn-orange text-xl mb-15 md:mb-0 ${
                   cartTotal < restaurant.minOrder && deliveryType === 'delivery'
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
@@ -188,15 +188,7 @@ export default function RestaurantDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b">
-        <div className="container mx-auto px-2 md:px-4 py-4">
-          <Link to="/" className="text-orange-500 hover:text-orange-600 flex items-center">
-            <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-            Torna alla lista
-          </Link>
-        </div>
-      </div>
+      <Navbar isSticky={false} />
 
       {/* Contenuto principale */}
       <div className="container mx-auto px-2 md:px-4 py-8">
