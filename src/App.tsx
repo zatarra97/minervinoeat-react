@@ -5,6 +5,8 @@ import Login from './Pages/Auth/Login'
 import Register from './Pages/Auth/Register'
 import './App.css'
 import RestaurantDetails from './Pages/RestaurantDetail'
+import { Footer } from './Components/Footer'
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -14,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/accesso/registrati" element={<Register />} />
         <Route path="/dettaglio/:id" element={<RestaurantDetails />} />
       </Routes>
+      <Footer />
     </Router>
   )
 }

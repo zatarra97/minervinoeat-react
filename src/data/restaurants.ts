@@ -31,10 +31,61 @@ export const restaurants: Restaurant[] = [
     category: 'pizzeria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -51,10 +102,61 @@ export const restaurants: Restaurant[] = [
     category: 'pasticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -71,10 +173,61 @@ export const restaurants: Restaurant[] = [
     category: 'rosticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -91,10 +244,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.7 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -111,10 +315,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.1 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -131,10 +386,61 @@ export const restaurants: Restaurant[] = [
     distance: '2.0 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -151,10 +457,61 @@ export const restaurants: Restaurant[] = [
     category: 'pizzeria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -171,10 +528,61 @@ export const restaurants: Restaurant[] = [
     category: 'pasticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -191,10 +599,61 @@ export const restaurants: Restaurant[] = [
     category: 'rosticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -211,10 +670,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.7 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -231,10 +741,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.1 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -251,10 +812,61 @@ export const restaurants: Restaurant[] = [
     distance: '2.0 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -271,10 +883,61 @@ export const restaurants: Restaurant[] = [
     distance: '2.0 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -291,10 +954,61 @@ export const restaurants: Restaurant[] = [
     category: 'pizzeria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -311,10 +1025,61 @@ export const restaurants: Restaurant[] = [
     category: 'pasticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -331,10 +1096,61 @@ export const restaurants: Restaurant[] = [
     category: 'rosticceria',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -351,10 +1167,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.7 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -371,10 +1238,61 @@ export const restaurants: Restaurant[] = [
     distance: '1.1 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   },
@@ -391,10 +1309,61 @@ export const restaurants: Restaurant[] = [
     distance: '2.0 km',
     menu: [
       {
-        name: 'Pizza Margherita',
-        description: 'Pomodoro, mozzarella, basilico',
-        price: 5.00,
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+        category: 'Pizze Rosse',
+        items: [
+          {
+            name: 'Marinara',
+            description: 'Pomodoro, aglio, origano, olio EVO',
+            price: 7.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Margherita',
+            description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
+            price: 8.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Diavola',
+            description: 'Pomodoro, mozzarella fior di latte, salame piccante, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Pizze Bianche',
+        items: [
+          {
+            name: 'Quattro Formaggi',
+            description: 'Mozzarella fior di latte, gorgonzola, parmigiano, provola affumicata',
+            price: 10.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Boscaiola',
+            description: 'Mozzarella fior di latte, funghi, salsiccia, olio EVO',
+            price: 9.50,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Bevande',
+        items: [
+          {
+            name: 'Coca Cola 33cl',
+            description: 'Lattina',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Acqua Naturale 50cl',
+            description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
       }
     ]
   }
