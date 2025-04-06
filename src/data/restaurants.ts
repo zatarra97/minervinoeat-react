@@ -20,7 +20,7 @@ export const categories: Category[] = [
 export const restaurants: Restaurant[] = [
   {
     id: '1',
-    name: 'Pizzeria Napoli',
+    name: 'Sissy D\'Amato',
     image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591',
     deliveryTime: '20-30 min',
     rating: 4.8,
@@ -42,7 +42,7 @@ export const restaurants: Restaurant[] = [
           {
             name: 'Margherita',
             description: 'Pomodoro, mozzarella fior di latte, basilico, olio EVO',
-            price: 8.00,
+            price: 4.00,
             image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
           },
           {
@@ -82,6 +82,29 @@ export const restaurants: Restaurant[] = [
           {
             name: 'Acqua Naturale 50cl',
             description: 'Bottiglia',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          }
+        ]
+      },
+      {
+        category: 'Dolci',
+        items: [
+          {
+            name: 'Tiramisu',
+            description: 'vasetto',
+            price: 3.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Panna Cotta',
+            description: 'vasetto',
+            price: 2.00,
+            image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
+          },
+          {
+            name: 'Cheesecake frutti di bosco',
+            description: 'vasetto',
             price: 2.00,
             image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591'
           }

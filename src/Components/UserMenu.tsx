@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignOutAlt, faChevronDown, faReceipt, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { cognitoService } from '../services/cognito';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,15 +46,29 @@ export const UserMenu = () => {
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-          <div className="px-4 py-2 border-b border-gray-100 cursor-pointer">
-            <p className="text-sm font-medium text-gray-900">Il mio profilo</p>
-          </div>
+          <a 
+            href="/profilo" 
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+          >
+            <FontAwesomeIcon icon={faUser} className="text-gray-400 w-4 h-4" />
+            <span>Il mio profilo</span>
+          </a>
+          
+          <a 
+            href="/ordini" 
+            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+          >
+            <FontAwesomeIcon icon={faReceipt} className="text-gray-400 w-4 h-4" />
+            <span>I miei ordini</span>
+          </a>
+
+          <div className="h-px bg-gray-200 my-1"></div>
 
           <button
             onClick={handleLogout}
-            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2 cursor-pointer"
+            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
           >
-            <FontAwesomeIcon icon={faSignOutAlt} className="text-gray-400" />
+            <FontAwesomeIcon icon={faSignOutAlt} className="text-gray-400 w-4 h-4" />
             <span>Esci</span>
           </button>
         </div>
