@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faClock, faEuroSign, faShoppingCart, faPlus, faMinus, faTrash, faTimes, faBicycle, faStore } from '@fortawesome/free-solid-svg-icons';
 import { restaurants } from '../data/restaurants';
@@ -13,6 +13,7 @@ interface CartItem extends MenuItem {
 type DeliveryType = 'delivery' | 'pickup';
 
 export default function RestaurantDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const restaurant = restaurants.find(r => r.id === id);
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -48,6 +49,16 @@ export default function RestaurantDetail() {
   };
 
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+  const handleProceedToCheckout = () => {
+    navigate('/conferma-ordine', {
+      state: {
+        restaurant,
+        cartItems: cart,
+        deliveryType
+      }
+    });
+  };
 
   if (!restaurant) {
     return (
@@ -164,6 +175,7 @@ export default function RestaurantDetail() {
                     : ''
                 }`}
                 disabled={cartTotal < restaurant.minOrder && deliveryType === 'delivery'}
+                onClick={handleProceedToCheckout}
               >
                 {cartTotal < restaurant.minOrder && deliveryType === 'delivery' 
                   ? `Ordine minimo €${restaurant.minOrder.toFixed(2)}`
@@ -191,11 +203,11 @@ export default function RestaurantDetail() {
       <Navbar isSticky={false} />
 
       {/* Contenuto principale */}
-      <div className="container mx-auto px-2 md:px-4 py-8">
+      <div className="container mx-auto px-2 md:px-4 py-4">
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2">
             {/* Immagine di copertina */}
-            <div className="relative h-[300px] special-rounded  overflow-hidden mb-8">
+            <div className="relative h-[300px] special-rounded  overflow-hidden mb-4">
               <img
                 src={restaurant.image}
                 alt={restaurant.name}
