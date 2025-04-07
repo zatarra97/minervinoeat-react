@@ -14,7 +14,7 @@ export default function OrdersPage() {
   return (
     <div className="bg-gray-50">
       <Navbar />
-      <div className="container mx-auto md:px-4 px-2 py-5">
+      <div className="container mx-auto md:px-4 px-2 py-5 lg:py-15">
         <div className="flex gap-8">
 
           {/* Lista ordini */}

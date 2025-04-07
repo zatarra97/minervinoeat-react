@@ -22,7 +22,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg md:rounded-none special-rounded shadow-sm">
+    <div className="bg-white rounded-lg md:rounded-none special-rounded shadow-sm lg:pb-3 border border-gray-200">
       {/* Header sempre visibile */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
@@ -38,7 +38,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
       </button>
 
       {/* Lista categorie - nascosta su mobile quando chiusa */}
-      <div className={`space-y-2 transition-all duration-300 overflow-hidden md:block
+      <div className={`space-y-2 transition-all duration-300 overflow-hidden md:block px-3
         ${isOpen ? 'max-h-[500px] opacity-100 mt-5' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100'}`}
       >
         {categories.map((category) => (

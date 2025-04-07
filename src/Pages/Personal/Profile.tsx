@@ -5,7 +5,7 @@ export default function ProfilePage() {
   return (
     <div className="bg-gray-50">
       <Navbar />
-      <div className="container mx-auto md:px-4 px-2 py-5 md:py-10">
+      <div className="container mx-auto md:px-4 px-2 py-5 lg:py-15">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white special-rounded p-6 border border-gray-200">
             <div className="flex items-center gap-2 mb-6">

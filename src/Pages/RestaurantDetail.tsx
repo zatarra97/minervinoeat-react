@@ -75,13 +75,13 @@ export default function RestaurantDetail() {
     <div className={`${
       isCartOpen 
         ? 'fixed inset-0 z-50 overflow-y-auto bg-white' 
-        : 'hidden md:block md:sticky md:top-4 '
+        : 'hidden lg:block lg:sticky lg:top-4'
     }`}>
-      <div className="bg-white p-4 rounded-lg shadow-sm h-full overflow-y-auto py-5">
+      <div className="bg-white p-4 rounded-lg shadow-sm h-full overflow-y-auto py-5 border border-gray-200">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-center w-full mt-3">Il tuo ordine</h2>
           {isCartOpen && (
-            <button onClick={() => setIsCartOpen(false)} className="text-gray-500">
+            <button onClick={() => setIsCartOpen(false)} className="text-gray-500 text-xl cursor-pointer">
               <FontAwesomeIcon icon={faTimes} />
             </button>
           )}
@@ -169,7 +169,7 @@ export default function RestaurantDetail() {
                 </div>
               </div>
               <button 
-                className={`w-full btn btn-orange text-xl mb-15 md:mb-0 ${
+                className={`w-full btn btn-orange text-xl mb-15 lg:mb-0 ${
                   cartTotal < restaurant.minOrder && deliveryType === 'delivery'
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
@@ -189,7 +189,7 @@ export default function RestaurantDetail() {
         {isCartOpen && (
           <button
             onClick={() => setIsCartOpen(false)}
-            className="fixed bottom-0 left-0 right-0 bg-orange-500 text-white py-4 text-center"
+            className="fixed bottom-0 left-0 right-0 bg-orange-500 text-white py-4 text-center cursor-pointer font-semibold text-lg"
           >
             Aggiungi altri articoli
           </button>
@@ -203,11 +203,11 @@ export default function RestaurantDetail() {
       <Navbar isSticky={false} />
 
       {/* Contenuto principale */}
-      <div className="container mx-auto px-2 md:px-4 py-4">
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="md:col-span-2">
+      <div className="container mx-auto lg:px-4 lg:py-4">
+        <div className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
             {/* Immagine di copertina */}
-            <div className="relative h-[300px] special-rounded  overflow-hidden mb-4">
+            <div className="relative h-[250px] lg:h-[300px] special-rounded  overflow-hidden mb-4 border border-gray-200">
               <img
                 src={restaurant.image}
                 alt={restaurant.name}
@@ -216,7 +216,7 @@ export default function RestaurantDetail() {
             </div>
 
             {/* Informazioni principali */}
-            <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-8">
+            <div className="bg-white rounded-lg shadow-sm p-4 lg:p-6 mb-8 border border-gray-200">
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                 <div>
                   <h1 className="text-3xl font-bold text-gray-800 mb-2">{restaurant.name}</h1>
@@ -252,7 +252,7 @@ export default function RestaurantDetail() {
                     <h2 className="text-2xl font-bold text-gray-800 mb-4">{category.category}</h2>
                     <div className="space-y-4">
                       {category.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex justify-between items-start p-4 bg-gray-50 rounded-lg">
+                        <div key={itemIndex} className="flex justify-between items-start p-4 bg-gray-50 rounded-lg  border border-gray-200">
                           <div>
                             <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
                             <p className="text-gray-600 text-sm mt-1">{item.description}</p>
@@ -274,7 +274,7 @@ export default function RestaurantDetail() {
           </div>
 
           {/* Carrello Desktop */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Cart />
           </div>
         </div>
@@ -284,10 +284,11 @@ export default function RestaurantDetail() {
       {cart.length > 0 && !isCartOpen && (
         <button
           onClick={() => setIsCartOpen(true)}
-          className="fixed bottom-4 right-4 md:hidden bg-orange-500 text-white px-6 py-4 rounded-full shadow-lg cursor-pointer"
+          className="fixed bottom-4 left-4 mx-auto lg:hidden bg-orange-500 text-white px-6 py-4 special-rounded shadow-xl cursor-pointer flex items-center justify-center "
         >
           <FontAwesomeIcon icon={faShoppingCart} className="mr-2" />
-          <span className="bg-white text-orange-500 px-2 py-1 rounded-full text-sm">
+          <span className="font-semibold text-lg">Carrello</span>
+          <span className="bg-white text-orange-500 px-2 py-1 rounded-full text-lg ml-2 w-8 h-8 flex items-center justify-center font-semibold">
             {cart.reduce((total, item) => total + item.quantity, 0)}
           </span>
         </button>
@@ -295,7 +296,7 @@ export default function RestaurantDetail() {
 
       {/* Carrello Mobile */}
       {isCartOpen && (
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Cart />
         </div>
       )}

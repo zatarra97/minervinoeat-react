@@ -11,7 +11,7 @@ interface RestaurantCardProps {
 export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
     <Link to={`/dettaglio/${restaurant.id}`} className="block group">
-      <div className="bg-white special-rounded shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div className="bg-white special-rounded shadow-md overflow-hidden hover:shadow-lg transition-shadow  border border-gray-200">
         <div className="relative">
           <img 
             src={restaurant.image} 
