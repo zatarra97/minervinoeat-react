@@ -1,5 +1,3 @@
-import { Restaurant } from '../types/restaurant';
-
 export interface OrderItem {
   id: string;
   name: string;

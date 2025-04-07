@@ -10,10 +10,12 @@ import OrderConfirmation from './Pages/OrderConfirmation/OrderConfirmation'
 import Orders from './Pages/Orders/Orders'
 import ProfilePage from './Pages/Personal/Profile'
 import NotFound from './Pages/NotFound/NotFound'
+import ScrollToTop from './Components/ScrollToTop'
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/accesso/login" element={<Login />} />

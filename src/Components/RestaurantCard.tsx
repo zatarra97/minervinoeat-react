@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Restaurant } from '../types/restaurant';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faStar, faLocationDot, faEuroSign } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faStar, faEuroSign } from '@fortawesome/free-solid-svg-icons';
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
