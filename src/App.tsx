@@ -15,6 +15,7 @@ import ControlPanel from './Pages/ControlPanel/ControlPanel'
 import Dashboard from './Pages/ControlPanel/Dashboard'
 import ControlPanelOrders from './Pages/ControlPanel/Orders'
 import MenuBuilder from './Pages/ControlPanel/MenuBuilder'
+import Statistics from './Pages/ControlPanel/Statistics'
 
 // Componente per renderizzare il footer in modo condizionale
 const ConditionalFooter = () => {
@@ -46,7 +47,7 @@ const App: React.FC = () => {
           <Route index element={<Dashboard />} />
           <Route path="ordini" element={<ControlPanelOrders />} />
           <Route path="menu" element={<MenuBuilder />} />
-          <Route path="statistiche" element={<div className="p-4 bg-white rounded-lg shadow"><h1 className="text-2xl font-bold mb-4">Statistiche</h1><p>Pagina in costruzione</p></div>} />
+          <Route path="statistiche" element={<Statistics />} />
           <Route path="impostazioni" element={<div className="p-4 bg-white rounded-lg shadow"><h1 className="text-2xl font-bold mb-4">Impostazioni</h1><p>Pagina in costruzione</p></div>} />
         </Route>
         
