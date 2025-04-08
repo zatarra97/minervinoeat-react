@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faChevronDown, faReceipt, faLocationDot, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignOutAlt, faChevronDown, faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { cognitoService } from '../services/cognito';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+.back {
+    background-image: url('./assets/background.png');
+    background-size: 120px 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.back-repeat {
+    background-image: url('./assets/background.png');
+    background-size: 600px 600px;
+    background-position: center;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
 .special-rounded {
   border-radius: 40px 10px 40px 10px;
 }

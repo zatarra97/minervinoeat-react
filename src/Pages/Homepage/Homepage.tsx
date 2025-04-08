@@ -19,7 +19,7 @@ export default function Homepage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 back-repeat">
       {/* Header con logo, ricerca e accesso */}
       <header className="sticky top-0 z-10 bg-white border-b border-orange-500 shadow-sm">
         <div className="container mx-auto md:px-4 px-2">

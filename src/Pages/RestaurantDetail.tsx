@@ -98,7 +98,7 @@ export default function RestaurantDetail() {
           >
             <FontAwesomeIcon icon={faBicycle} />
             <span>Consegna</span>
-            <span className="text-sm">
+            <span className="text-base">
               {deliveryType === 'delivery'}
             </span>
           </button>
@@ -112,7 +112,7 @@ export default function RestaurantDetail() {
           >
             <FontAwesomeIcon icon={faStore} />
             <span>Ritiro</span>
-            <span className="text-sm">
+            <span className="text-base">
               {deliveryType === 'pickup' }
             </span>
           </button>
@@ -127,7 +127,7 @@ export default function RestaurantDetail() {
                 <div key={item.name} className="flex justify-between items-center">
                   <div>
                     <h3 className="font-medium text-lg">{item.name}</h3>
-                    <p className="text-sm text-gray-500">€{item.price.toFixed(2)}</p>
+                    <p className="text-base text-gray-500">€{item.price.toFixed(2)}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
@@ -199,7 +199,7 @@ export default function RestaurantDetail() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 back-repeat">
       <Navbar isSticky={false} />
 
       {/* Contenuto principale */}
@@ -220,7 +220,7 @@ export default function RestaurantDetail() {
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                 <div>
                   <h1 className="text-3xl font-bold text-gray-800 mb-2">{restaurant.name}</h1>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4 text-base text-gray-600">
                     <div className="flex items-center">
                       <FontAwesomeIcon icon={faStar} className="text-yellow-400 mr-1" />
                       <span className="font-medium">{restaurant.rating}</span>
@@ -236,10 +236,10 @@ export default function RestaurantDetail() {
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <div className="text-sm text-gray-600 mb-1">
+                  <div className="text-base text-gray-600 mb-1">
                     Ordine minimo: <FontAwesomeIcon icon={faEuroSign} className="text-gray-500" /> {restaurant.minOrder}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-base text-gray-600">
                     Consegna: {restaurant.deliveryFee}
                   </div>
                 </div>
@@ -255,7 +255,7 @@ export default function RestaurantDetail() {
                         <div key={itemIndex} className="flex justify-between items-start p-4 bg-gray-50 rounded-lg  border border-gray-200">
                           <div>
                             <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
-                            <p className="text-gray-600 text-sm mt-1">{item.description}</p>
+                            <p className="text-gray-600 text-base mt-1">{item.description}</p>
                             <p className="text-orange-500 font-medium mt-2">€{item.price.toFixed(2)}</p>
                           </div>
                           <button
