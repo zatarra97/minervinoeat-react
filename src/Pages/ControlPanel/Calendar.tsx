@@ -109,9 +109,9 @@ const Calendar: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div className="mx-auto space-y-6 xl:flex xl:space-y-0 xl:space-x-6 w-full xl:py-6">
       {/* Header Calendario */}
-      <div className="bg-white rounded-lg shadow-sm p-4">
+      <div className="bg-white rounded-lg shadow-sm p-4 xl:w-7/12">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold">Calendario Ferie</h2>
           <button
@@ -213,7 +213,7 @@ const Calendar: React.FC = () => {
       </div>
 
       {/* Lista Chiusure */}
-      <div className="bg-white rounded-lg shadow-sm p-4">
+      <div className="bg-white rounded-lg shadow-sm p-4 xl:w-5/12 xl:overflow-y-auto">
         <h3 className="text-lg font-semibold mb-4">Periodi di Chiusura</h3>
         <div className="space-y-4">
           {closureEvents.map((closure, index) => (
@@ -236,7 +236,10 @@ const Calendar: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={() => handleDeleteClosure(closure)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteClosure(closure);
+                }}
                 className="text-red-600 hover:text-red-800 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
