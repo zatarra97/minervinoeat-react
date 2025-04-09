@@ -19,7 +19,7 @@ export const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-white uppercase">Risorse</h2>
               <ul className="text-slate-300 font-medium">
                 <li className="mb-4">
-                  <Link to="/ristoranti" className="hover:underline">Ristoranti</Link>
+                  <Link to="/control-panel" className="hover:underline">Ristoranti</Link>
                 </li>
                 <li>
                   <Link to="/categorie" className="hover:underline">Categorie</Link>

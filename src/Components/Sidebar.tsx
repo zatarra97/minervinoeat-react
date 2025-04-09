@@ -1,7 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { initFlowbite } from 'flowbite';
 
-export const Sidebar: React.FC = () => {
+const Sidebar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Inizializza i componenti di Flowbite
+    initFlowbite();
+  }, []);
+
+  useEffect(() => {
+    // Chiudi la sidebar quando cambia la rotta (solo su mobile)
+    const drawer = document.getElementById('logo-sidebar');
+    if (drawer && window.innerWidth < 640) { // 640px è il breakpoint 'sm' di Tailwind
+      drawer.classList.add('-translate-x-full');
+    }
+  }, [location]);
+
   return (
     <>
       <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
