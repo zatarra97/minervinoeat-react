@@ -51,7 +51,7 @@ const App: React.FC = () => {
           <Route path="menu" element={<MenuBuilder />} />
           <Route path="statistiche" element={<Statistics />} />
           <Route path="profilo" element={<Profile />} />
-          <Route path="calendario" element={<Calendar />} />
+          <Route path="ferie" element={<Calendar />} />
           <Route path="impostazioni" element={<div className="p-4 bg-white rounded-lg shadow"><h1 className="text-2xl font-bold mb-4">Impostazioni</h1><p>Pagina in costruzione</p></div>} />
         </Route>
         
