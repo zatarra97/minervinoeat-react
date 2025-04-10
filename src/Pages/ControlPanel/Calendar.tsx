@@ -23,6 +23,7 @@ const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isAddingClosure, setIsAddingClosure] = useState(false);
+  const [showDayDetails, setShowDayDetails] = useState(false);
   const [newClosure, setNewClosure] = useState<Partial<ClosureEvent>>({});
   const [closureEvents, setClosureEvents] = useState<ClosureEvent[]>([
     {
@@ -108,6 +109,11 @@ const Calendar: React.FC = () => {
     );
   };
 
+  const handleDayClick = (day: Date) => {
+    setSelectedDate(day);
+    setShowDayDetails(true);
+  };
+
   return (
     <div className="mx-auto space-y-6 xl:flex xl:space-y-0 xl:space-x-6 w-full xl:py-6">
       {/* Header Calendario */}
@@ -116,7 +122,7 @@ const Calendar: React.FC = () => {
           <h2 className="text-xl font-semibold">Calendario Ferie</h2>
           <button
             onClick={() => setIsAddingClosure(true)}
-            className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors cursor-pointer"
           >
             Aggiungi Chiusura
           </button>
@@ -155,9 +161,9 @@ const Calendar: React.FC = () => {
         </div>
 
         {/* Griglia calendario */}
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-2 md:gap-1">
           {Array.from({ length: monthStart.getDay() }).map((_, index) => (
-            <div key={`empty-${index}`} className="h-24 bg-gray-50 rounded-lg" />
+            <div key={`empty-${index}`} className="aspect-square bg-gray-50 rounded-lg" />
           ))}
           
           {daysInMonth.map((day: Date) => {
@@ -168,8 +174,8 @@ const Calendar: React.FC = () => {
             return (
               <div
                 key={day.toISOString()}
-                onClick={() => setSelectedDate(day)}
-                className={`h-24 p-2 rounded-lg border transition-colors cursor-pointer relative ${
+                onClick={() => handleDayClick(day)}
+                className={`aspect-square p-2 rounded-lg border transition-colors cursor-pointer relative ${
                   isSameMonth(day, currentDate)
                     ? 'bg-white'
                     : 'bg-gray-50'
@@ -313,6 +319,66 @@ const Calendar: React.FC = () => {
                 className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
               >
                 Aggiungi
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modale Dettagli Giorno */}
+      {showDayDetails && selectedDate && (
+        <div className="fixed inset-0 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md border border-gray-200 m-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold">
+                {format(selectedDate, 'EEEE d MMMM yyyy')}
+              </h3>
+              <button
+                onClick={() => setShowDayDetails(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {/* Stato del giorno */}
+              <div className="flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full ${isClosureDay(selectedDate) ? 'bg-red-500' : 'bg-green-500'}`}></div>
+                <span className="font-medium">
+                  {isClosureDay(selectedDate) ? 'Chiuso' : 'Aperto'}
+                </span>
+              </div>
+
+              {/* Orari di apertura */}
+              {!isClosureDay(selectedDate) && restaurantSchedule.openingHours[format(selectedDate, 'EEEE')] && (
+                <div>
+                  <h4 className="text-sm font-medium text-gray-700 mb-1">Orari di apertura:</h4>
+                  <p>
+                    {restaurantSchedule.openingHours[format(selectedDate, 'EEEE')].open} - {restaurantSchedule.openingHours[format(selectedDate, 'EEEE')].close}
+                  </p>
+                </div>
+              )}
+
+              {/* Motivo chiusura */}
+              {isClosureDay(selectedDate) && (
+                <div>
+                  <h4 className="text-sm font-medium text-gray-700 mb-1">Motivo chiusura:</h4>
+                  <p className="text-red-600">
+                    {getClosureReason(selectedDate)}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6">
+              <button
+                onClick={() => setShowDayDetails(false)}
+                className="w-full bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+              >
+                Chiudi
               </button>
             </div>
           </div>

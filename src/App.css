@@ -9,7 +9,7 @@
 }
 
 .back-repeat {
-    background-image: url('./assets/bg2.png');
+    /*background-image: url('./assets/bg2.png');*/
     background-size: 600px 600px;
     background-position: center;
     background-repeat: repeat;
@@ -45,3 +45,15 @@
 .btn-gray {
     @apply flex-shrink-0 bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors
 }
+
+/* Personalizzazione globale della scrollbar */
+* {
+    @apply [&::-webkit-scrollbar]:w-1 md:[&::-webkit-scrollbar]:w-2
+    [&::-webkit-scrollbar-track]:rounded-full
+    [&::-webkit-scrollbar-track]:bg-gray-100
+    [&::-webkit-scrollbar-thumb]:rounded-full
+    [&::-webkit-scrollbar-thumb]:bg-gray-300
+    [&::-webkit-scrollbar:horizontal]:h-2 md:[&::-webkit-scrollbar:horizontal]:h-2
+    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
+  }

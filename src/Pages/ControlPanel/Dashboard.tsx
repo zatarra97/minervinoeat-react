@@ -5,26 +5,38 @@ const Dashboard: React.FC = () => {
     <div>
       <h1 className="text-2xl font-bold mb-6">Dashboard Ristorante</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white p-6 special-rounded shadow">
-          <h2 className="text-lg font-semibold mb-2">Ordini Oggi</h2>
-          <p className="text-3xl font-bold text-orange-600">12</p>
-          <p className="text-sm text-gray-500 mt-2">+15% rispetto a ieri</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
+          <div className="flex items-center justify-between md:block">
+            <div>
+              <h2 className="text-sm md:text-lg font-semibold md:mb-2">Ordini Oggi</h2>
+              <p className="text-2xl md:text-3xl font-bold text-orange-600">12</p>
+            </div>
+            <p className="text-xs md:text-sm text-gray-500 md:mt-2">+15% rispetto a ieri</p>
+          </div>
         </div>
-        <div className="bg-white p-6 special-rounded shadow">
-          <h2 className="text-lg font-semibold mb-2">Incasso Oggi</h2>
-          <p className="text-3xl font-bold text-green-600">€247,50</p>
-          <p className="text-sm text-gray-500 mt-2">+8% rispetto a ieri</p>
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
+          <div className="flex items-center justify-between md:block">
+            <div>
+              <h2 className="text-sm md:text-lg font-semibold md:mb-2">Incasso Oggi</h2>
+              <p className="text-2xl md:text-3xl font-bold text-green-600">€247,50</p>
+            </div>
+            <p className="text-xs md:text-sm text-gray-500 md:mt-2">+8% rispetto a ieri</p>
+          </div>
         </div>
-        <div className="bg-white p-6 special-rounded shadow">
-          <h2 className="text-lg font-semibold mb-2">Nuovi Clienti</h2>
-          <p className="text-3xl font-bold text-blue-600">3</p>
-          <p className="text-sm text-gray-500 mt-2">+2 rispetto a ieri</p>
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
+          <div className="flex items-center justify-between md:block">
+            <div>
+              <h2 className="text-sm md:text-lg font-semibold md:mb-2">Nuovi Clienti</h2>
+              <p className="text-2xl md:text-3xl font-bold text-blue-600">3</p>
+            </div>
+            <p className="text-xs md:text-sm text-gray-500 md:mt-2">+2 rispetto a ieri</p>
+          </div>
         </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 special-rounded shadow">
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
           <h2 className="text-lg font-semibold mb-4">Ordini Recenti</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
@@ -66,7 +78,7 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white p-6 special-rounded shadow">
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
           <h2 className="text-lg font-semibold mb-4">Piatti Più Venduti</h2>
           <div className="space-y-4">
             <div className="flex items-center">
@@ -112,7 +124,7 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white p-6 special-rounded shadow">
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
           <h2 className="text-lg font-semibold mb-4">Attività Recenti</h2>
           <div className="space-y-4">
             <div className="flex">
@@ -152,7 +164,7 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white p-6 special-rounded shadow">
+        <div className="bg-white p-5 md:p-6 special-rounded shadow">
           <div className="mb-4">
             <div className="flex items-center mb-3">
               <div className="flex-1">

@@ -133,7 +133,7 @@ const Profile: React.FC = () => {
         </div>
 
         {/* Immagine Profilo e Info Base */}
-        <div className="relative -mt-20 ml-8">
+        <div className="relative -mt-20 ml-2">
           <div className="relative">
             <img
               src={profile.profileImage}
@@ -215,7 +215,7 @@ const Profile: React.FC = () => {
               <button
                 key={day}
                 onClick={() => toggleClosingDay(day)}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-colors cursor-pointer ${
                   profile.weeklyClosingDays.includes(day)
                     ? 'bg-orange-500 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -228,29 +228,45 @@ const Profile: React.FC = () => {
         </div>
 
         {/* Orari di Apertura */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h2 className="text-xl font-semibold mb-4">Orari di Apertura</h2>
-          <div className="space-y-4">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+          <h2 className="text-xl font-semibold mb-6">Orari di Apertura</h2>
+          <div className="">
             {daysOfWeek.map(day => (
-              <div key={day} className="flex items-center gap-4">
-                <span className="w-32">{day}</span>
+              <div 
+                key={day} 
+                className={`flex flex-col sm:flex-row sm:items-center p-3 rounded-lg transition-colors ${
+                  profile.weeklyClosingDays.includes(day) ? 'bg-red-50 mb-1' : ''
+                }`}
+              >
+                <div className="flex items-center justify-between sm:w-32 mb-2 sm:mb-0">
+                  <span className="font-medium text-gray-900">{day}</span>
+                  {profile.weeklyClosingDays.includes(day) && (
+                    <span className="text-red-500 text-sm italic sm:hidden">Chiuso</span>
+                  )}
+                </div>
                 {profile.weeklyClosingDays.includes(day) ? (
-                  <span className="text-red-500">Chiuso</span>
+                  <span className="hidden sm:block text-red-500 italic">Chiuso</span>
                 ) : (
-                  <div className="flex items-center gap-4">
-                    <input
-                      type="time"
-                      value={profile.openingHours[day]?.open || ''}
-                      onChange={(e) => handleOpeningHoursChange(day, 'open', e.target.value)}
-                      className="p-2 border rounded-lg"
-                    />
-                    <span>-</span>
-                    <input
-                      type="time"
-                      value={profile.openingHours[day]?.close || ''}
-                      onChange={(e) => handleOpeningHoursChange(day, 'close', e.target.value)}
-                      className="p-2 border rounded-lg"
-                    />
+                  <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                    <div className="flex flex-col flex-1">
+                      <label className="text-xs text-gray-500 mb-1">Apertura</label>
+                      <input
+                        type="time"
+                        value={profile.openingHours[day]?.open || ''}
+                        onChange={(e) => handleOpeningHoursChange(day, 'open', e.target.value)}
+                        className="p-2 border rounded-lg w-full bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                      />
+                    </div>
+                    <span className="self-end mb-2 text-gray-400">-</span>
+                    <div className="flex flex-col flex-1">
+                      <label className="text-xs text-gray-500 mb-1">Chiusura</label>
+                      <input
+                        type="time"
+                        value={profile.openingHours[day]?.close || ''}
+                        onChange={(e) => handleOpeningHoursChange(day, 'close', e.target.value)}
+                        className="p-2 border rounded-lg w-full bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                      />
+                    </div>
                   </div>
                 )}
               </div>
@@ -275,6 +291,21 @@ const Profile: React.FC = () => {
             </div>
 
             <div className="space-y-4">
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Ordine minimo (€)
+                </label>
+                <input
+                  type="number"
+                  value={profile.minimumOrder}
+                  onChange={(e) => handleMinimumOrderChange(e.target.value)}
+                  min="0"
+                  step="0.50"
+                  className="w-32 p-2 border rounded-lg"
+                />
+              </div>
+
               <div className="flex items-center gap-4">
                 <label className="inline-flex items-center">
                   <input
@@ -288,7 +319,7 @@ const Profile: React.FC = () => {
               </div>
 
               {profile.services.delivery && (
-                <div className="ml-8 space-y-4">
+                <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Costo di consegna (€)
@@ -305,26 +336,12 @@ const Profile: React.FC = () => {
                 </div>
               )}
             </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Ordine minimo (€)
-              </label>
-              <input
-                type="number"
-                value={profile.minimumOrder}
-                onChange={(e) => handleMinimumOrderChange(e.target.value)}
-                min="0"
-                step="0.50"
-                className="w-32 p-2 border rounded-lg"
-              />
-            </div>
           </div>
         </div>
 
         {/* Pulsante Salva */}
         <div className="flex justify-end">
-          <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+          <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors cursor-pointer">
             Salva Modifiche
           </button>
         </div>
