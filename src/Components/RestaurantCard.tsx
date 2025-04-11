@@ -28,7 +28,6 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) =>
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-lg font-semibold">{restaurant.name}</h3>
             <div className="flex items-center bg-green-50 px-2 py-1 rounded">
-              <span className="text-green-700 font-semibold mr-1">{restaurant.rating}</span>
               <FontAwesomeIcon icon={faStar} className="text-green-700" />
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-gray-50 back-repeat">
-      <Navbar isSticky={true} searchQuery="" onSearchChange={() => {}} />
+      <Navbar isSticky={true} />
       
       <div className="container mx-auto px-4 py-4 md:py-8">
         <div className="flex flex-col md:flex-row gap-8">

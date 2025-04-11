@@ -8,7 +8,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <div className="bg-gray-50 min-h-[80vh]">
-        <Navbar searchQuery="" onSearchChange={() => {}} />
+        <Navbar />
         <div className="container mx-auto px-4 py-5 lg:py-15">
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 rounded w-48 mb-4"></div>
@@ -43,7 +43,7 @@ export default function ProfilePage() {
   if (!user) {
     return (
       <div className="bg-gray-50 min-h-[80vh]">
-        <Navbar searchQuery="" onSearchChange={() => {}} />
+        <Navbar />
         <div className="container mx-auto px-4 py-5 lg:py-15">
           <div className="text-center">
             <h2 className="text-xl font-semibold mb-2">Accesso Negato</h2>
@@ -56,7 +56,7 @@ export default function ProfilePage() {
 
   return (
     <div className="bg-gray-50 min-h-[80vh]">
-      <Navbar searchQuery="" onSearchChange={() => {}} />
+      <Navbar />
       <div className="container mx-auto px-4 py-5 lg:py-15">
         <h2 className="text-xl font-semibold mb-4">Informazioni personali</h2>
         <div className="mx-auto">

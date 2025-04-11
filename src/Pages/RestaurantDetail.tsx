@@ -63,7 +63,7 @@ export default function RestaurantDetail() {
   if (!restaurant) {
     return (
       <div className="min-h-screen md:bg-gray-50">
-        <Navbar isSticky={false} searchQuery={''} onSearchChange={() => {}} />
+        <Navbar isSticky={false} />
         <div className="flex flex-col items-center justify-center p-4">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Ristorante non trovato</h2>
         </div>
@@ -200,7 +200,7 @@ export default function RestaurantDetail() {
 
   return (
     <div className="min-h-screen md:bg-gray-50 back-repeat">
-      <Navbar isSticky={false} searchQuery={''} onSearchChange={() => {}} />
+      <Navbar isSticky={false} />
 
       {/* Contenuto principale */}
       <div className="container mx-auto lg:px-4 lg:py-4">
