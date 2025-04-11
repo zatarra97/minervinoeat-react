@@ -2,15 +2,11 @@ import { useState } from 'react';
 import { restaurants, categories } from '../../data/restaurants';
 import { RestaurantCard } from '../../Components/RestaurantCard';
 import { CategoryFilter } from '../../Components/CategoryFilter';
-import { SearchBar } from '../../Components/SearchBar';
-import { UserMenu } from '../../Components/UserMenu';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Navbar } from '../../Components/Navbar/Navbar';
 
 export default function Homepage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   const filteredRestaurants = restaurants.filter(restaurant => {
     const matchesSearch = restaurant.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -20,52 +16,19 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-gray-50 back-repeat">
-      <header className="sticky top-0 z-10 bg-white border-b border-orange-500 shadow-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center h-16 w-full">
-            {/* Logo */}
-            <h1 className="text-2xl font-bold text-orange-600 flex-shrink-0">
-              {import.meta.env.VITE_APP_NAME}
-            </h1>
-
-            {/* Barra di ricerca - Desktop */}
-            <div className="hidden md:block flex-1 max-w-sm mx-4">
-              <SearchBar value={searchQuery} onChange={setSearchQuery} />
-            </div>
-
-            {/* Area destra con controlli */}
-            <div className="flex items-center gap-4 ml-auto">
-              {/* Icona ricerca (sempre visibile) */}
-              <button
-                onClick={() => setShowMobileSearch(!showMobileSearch)}
-                className="md:hidden p-2 text-gray-500 hover:text-gray-700 focus:outline-none"
-              >
-                <FontAwesomeIcon icon={showMobileSearch ? faTimes : faSearch} />
-              </button>
-
-              {/* Menu utente unificato */}
-              <UserMenu />
-            </div>
-          </div>
-
-          {/* Barra di ricerca mobile */}
-          {showMobileSearch && (
-            <div className="md:hidden py-3 border-t border-gray-200">
-              <SearchBar value={searchQuery} onChange={setSearchQuery} />
-            </div>
-          )}
-        </div>
-      </header>
-
+      <Navbar isSticky={true} searchQuery="" onSearchChange={() => {}} />
+      
       <div className="container mx-auto px-4 py-4 md:py-8">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Sidebar con filtri - sticky */}
           <div className="md:w-64 flex-shrink-0">
-            <div className="sticky top-[84px]"> {/* Altezza header (64px) + spazio (20px) */}
+            <div className="sticky top-[84px]">
               <CategoryFilter
-                categories={categories}
+                categories={categories.map(c => c.name)}
                 selectedCategory={selectedCategory}
                 onSelectCategory={setSelectedCategory}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
               />
             </div>
           </div>

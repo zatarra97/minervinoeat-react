@@ -2,59 +2,91 @@ import React, { useState } from 'react';
 import { Category } from '../data/restaurants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { SearchBar } from './SearchBar';
 
 interface CategoryFilterProps {
-  categories: Category[];
+  categories: string[];
   selectedCategory: string | null;
-  onSelectCategory: (categoryId: string | null) => void;
+  onSelectCategory: (category: string | null) => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }
 
-export const CategoryFilter: React.FC<CategoryFilterProps> = ({
+export const CategoryFilter = ({
   categories,
   selectedCategory,
   onSelectCategory,
-}) => {
+  searchQuery,
+  onSearchChange
+}: CategoryFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleCategoryClick = (categoryId: string) => {
-    onSelectCategory(selectedCategory === categoryId ? null : categoryId);
-    setIsOpen(false); // Chiude il dropdown dopo la selezione su mobile
-  };
-
   return (
-    <div className="bg-white rounded-lg md:rounded-none special-rounded shadow-sm lg:pb-3 border border-gray-200">
+    <div className="bg-white special-rounded border border-gray-200 p-4">
       {/* Header sempre visibile */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between text-lg font-semibold md:mb-4 md:cursor-default cursor-pointer p-4 "
+        className="w-full flex items-center justify-between text-lg font-semibold md:mb-4 md:cursor-default cursor-pointer px-4"
       >
-        <span className="ml-3">Categorie</span>
+        <div className="flex items-center gap-2">
+          <span className="">Filtri</span>
+          {(searchQuery || selectedCategory) && (
+            <span className="bg-orange-600 text-orange-100 text-sm px-2 py-0.5 rounded-full text-center w-6 h-6">
+              {[searchQuery, selectedCategory].filter(Boolean).length}
+            </span>
+          )}
+        </div>
         <div className="md:hidden pr-5">
-            <FontAwesomeIcon 
+          <FontAwesomeIcon 
             icon={faChevronDown} 
             className={`md:hidden transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-            />
+          />
         </div>
       </button>
 
-      {/* Lista categorie - nascosta su mobile quando chiusa */}
-      <div className={`space-y-2 transition-all duration-300 overflow-hidden md:block px-3
-        ${isOpen ? 'max-h-[500px] opacity-100 mt-5' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100'}`}
+      {/* Contenuto - nascosto su mobile quando chiuso */}
+      <div className={`space-y-6 transition-all duration-300 overflow-hidden md:block
+        ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-[500px] md:opacity-100'}`}
       >
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => handleCategoryClick(category.id)}
-            className={`w-full flex items-center px-3 py-2 special-rounded-small text-left transition-colors cursor-pointer ${
-              selectedCategory === category.id
-                ? 'bg-orange-100 text-orange-800'
-                : 'hover:bg-gray-100 text-gray-700'
-            }`}
-          >
-            <span className="text-xl mr-3">{category.icon}</span>
-            <span className="font-medium">{category.name}</span>
-          </button>
-        ))}
+        {/* Barra di ricerca */}
+        <div className="px-2 mt-2">
+          <SearchBar value={searchQuery} onChange={onSearchChange} />
+        </div>
+
+        {/* Categorie */}
+        <div>
+          <div className="space-y-2">
+            <button
+              onClick={() => {
+                onSelectCategory(null);
+                setIsOpen(false);
+              }}
+              className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                selectedCategory === null
+                  ? 'bg-orange-50 text-orange-600 font-medium'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              Tutte le categorie
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => {
+                  onSelectCategory(category);
+                  setIsOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                  selectedCategory === category
+                    ? 'bg-orange-50 text-orange-600 font-medium'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
