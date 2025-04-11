@@ -31,10 +31,8 @@ export const Navbar = ({
             </div>
           )}
 
-          {/* Menu utente unificato */}
-          <div className="flex items-center gap-2">
-            <UserMenu />
-          </div>
+          {/* Menu utente */}
+          <UserMenu />
         </div>
       </div>
     </header>

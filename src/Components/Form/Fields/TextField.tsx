@@ -4,8 +4,9 @@ import { UseFormRegister } from 'react-hook-form';
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
-  register: UseFormRegister<any>;
+  register?: UseFormRegister<any>;
   name: string;
+  value?: string;
 }
 
 export const TextField: React.FC<TextFieldProps> = ({ 
@@ -14,6 +15,8 @@ export const TextField: React.FC<TextFieldProps> = ({
   register, 
   name, 
   type = "text",
+  value,
+  disabled,
   ...props 
 }) => {
   return (
@@ -28,8 +31,10 @@ export const TextField: React.FC<TextFieldProps> = ({
             ? 'border-red-500 focus:border-red-500' 
             : 'border-gray-300 focus:border-orange-500'
           }
+          ${disabled ? 'bg-slate-100 text-gray-700 cursor-not-allowed' : 'bg-white'}
         `}
-        {...register(name)}
+        {...(register ? register(name) : { name, value })}
+        disabled={disabled}
         {...props}
       />
       {error && (

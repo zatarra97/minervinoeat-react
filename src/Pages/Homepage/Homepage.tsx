@@ -34,7 +34,7 @@ export default function Homepage() {
             </div>
 
             {/* Area destra con controlli */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-4 ml-auto">
               {/* Icona ricerca (sempre visibile) */}
               <button
                 onClick={() => setShowMobileSearch(!showMobileSearch)}

@@ -5,6 +5,8 @@ import {
   CognitoUserAttribute,
   ISignUpResult
 } from 'amazon-cognito-identity-js';
+import { resetUserCache } from '../hooks/useUser';
+import { logger } from '../utils/logger';
 
 const poolData = {
   UserPoolId: import.meta.env.VITE_COGNITO_USER_POOL_ID,
@@ -62,9 +64,13 @@ class CognitoService {
     return new Promise((resolve, reject) => {
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result) => {
+          const idToken = result.getIdToken().getJwtToken();
+          localStorage.setItem('idToken', idToken);
+          logger.info('Login effettuato con successo', { email });
           resolve(cognitoUser);
         },
         onFailure: (err) => {
+          logger.error('Errore durante il login', { error: err, email });
           reject(err);
         }
       });
@@ -72,9 +78,13 @@ class CognitoService {
   }
 
   async signOut(): Promise<void> {
+    logger.info('Avvio processo di logout');
     const cognitoUser = userPool.getCurrentUser();
     if (cognitoUser) {
       cognitoUser.signOut();
+      localStorage.removeItem('idToken');
+      resetUserCache();
+      logger.info('Logout completato con successo');
     }
   }
 
@@ -97,6 +107,31 @@ class CognitoService {
           return;
         }
         resolve(session);
+      });
+    });
+  }
+
+  async refreshSession(): Promise<void> {
+    const cognitoUser = userPool.getCurrentUser();
+    if (!cognitoUser) {
+      throw new Error('No user found');
+    }
+
+    const session = cognitoUser.getSignInUserSession();
+    const refreshToken = session?.getRefreshToken();
+    if (!refreshToken) {
+      throw new Error('No refresh token found');
+    }
+
+    return new Promise((resolve, reject) => {
+      cognitoUser.refreshSession(refreshToken, (err, session) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        const idToken = session.getIdToken().getJwtToken();
+        localStorage.setItem('idToken', idToken);
+        resolve();
       });
     });
   }

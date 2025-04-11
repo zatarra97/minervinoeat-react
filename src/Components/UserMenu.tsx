@@ -1,16 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faChevronDown, faReceipt } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignOutAlt, faChevronDown, faReceipt, faUserCircle, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { cognitoService } from '../services/cognito';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useUser } from '../hooks/useUser';
 
 export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const { user, loading } = useUser();
 
   // Chiudi il dropdown quando si clicca fuori
   useEffect(() => {
@@ -33,15 +35,33 @@ export const UserMenu = () => {
     }
   };
 
-  // Dati dell'utente (in un'app reale verrebbero da un contesto o da un hook)
-  const userData = {
-    name: "Emmanuele Carlone",
-    email: "emmanuele.carlone@gmail.com",
-    role: "Cliente"
-  };
+  if (loading) {
+    return (
+      <div className="p-2">
+        <FontAwesomeIcon icon={faUserCircle} className="text-gray-400 animate-pulse" />
+      </div>
+    );
+  }
 
-  if (isLoading) {
-    return null;
+  if (!user) {
+    return (
+      <div className="flex items-center gap-2">
+        <Link
+          to="/accesso/login"
+          className="btn btn-orange btn-sm"
+        >
+          <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
+          Login
+        </Link>
+        <Link
+          to="/accesso/registrati"
+          className="btn btn-outline-orange btn-sm"
+        >
+          <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
+          Registrati
+        </Link>
+      </div>
+    );
   }
 
   // Versione mobile per utenti non autenticati
@@ -53,11 +73,11 @@ export const UserMenu = () => {
       >
         <span className="sr-only">Menu accesso</span>
         <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center">
-          <FontAwesomeIcon icon={faUser} />
+          <FontAwesomeIcon icon={faUserCircle} />
         </div>
       </button>
 
-      {isOpen && (
+      {isOpen && !loading && (
         <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50 border border-gray-200">
           <div className="py-2">
             <Link 
@@ -101,9 +121,9 @@ export const UserMenu = () => {
       >
         <span className="sr-only">Apri menu utente</span>
         <div className="w-8 h-8 me-2 rounded-full bg-orange-500 text-white flex items-center justify-center">
-          <FontAwesomeIcon icon={faUser} />
+          <FontAwesomeIcon icon={faUserCircle} />
         </div>
-        <span className="hidden md:block">{userData.name}</span>
+        <span className="hidden md:block">{user.name} {user.surname}</span>
         <FontAwesomeIcon 
           icon={faChevronDown} 
           className={`ms-2 text-gray-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -114,8 +134,8 @@ export const UserMenu = () => {
       {isOpen && (
         <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg divide-y divide-gray-100 z-50 border border-gray-200">
           <div className="px-4 py-3">
-            <div className="font-medium text-gray-900">{userData.role}</div>
-            <div className="text-sm text-gray-500 truncate">{userData.email}</div>
+            <div className="font-medium text-gray-900">{user.name} {user.surname}</div>
+            <div className="text-sm text-gray-500 truncate">{user.email}</div>
           </div>
           
           <ul className="py-2">
