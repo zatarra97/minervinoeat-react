@@ -1,34 +1,43 @@
 import { Navbar } from '../../Components/Navbar/Navbar';
-import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
   return (
-    <div className="bg-gray-50">
-      <Navbar />
-      <div className="container mx-auto md:px-4 px-2 py-5 lg:py-15">
-        <div className="max-w-2xl mx-auto">
+    <div className="bg-gray-50  min-h-[80vh]">
+      <Navbar searchQuery="" onSearchChange={() => {}} />
+      <div className="container mx-auto px-4 py-5 lg:py-15">
+        <h2 className="text-xl font-semibold mb-4">Informazioni personali</h2>
+        <div className="mx-auto">
           <div className="bg-white special-rounded p-6 border border-gray-200">
-            <div className="flex items-center gap-2 mb-6">
-              <Link to="/" className="text-gray-600 hover:text-gray-800">
-              </Link>
-              <h1 className="text-2xl font-bold">Informazioni personali</h1>
-            </div>
 
-            <div className="space-y-6">
-              {/* Nome */}
-              <div>
+            <div className="md:flex items-center gap-2 mb-6">
+              <div className="w-full md:w-1/2">
+                {/* Nome */}
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Nome
                 </label>
                 <input
                   type="text"
                   id="name"
-                  value="Emmanuele Carlone"
+                  value="Emmanuele"
                   disabled
                   className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700"
                 />
               </div>
-
+              <div className="w-full md:w-1/2 md:mt-0 mt-6">
+                {/* Cognome */}
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Cognome
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value="Carlone"
+                  disabled
+                  className="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700"
+                />
+              </div>
+            </div>
+            <div className="space-y-6">
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">

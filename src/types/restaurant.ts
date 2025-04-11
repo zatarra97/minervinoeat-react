@@ -3,9 +3,6 @@ export interface Restaurant {
   name: string;
   image: string;
   deliveryTime: string;
-  rating: number;
-  distance: string;
-  reviewCount: number;
   deliveryFee: string;
   minOrder: number;
   category: string;

@@ -12,13 +12,15 @@ export default function OrdersPage() {
   };
 
   return (
-    <div className="bg-gray-50">
-      <Navbar />
-      <div className="container mx-auto md:px-4 px-2 py-5 lg:py-15">
+    <div className="bg-gray-50 min-h-[80vh]">
+      <Navbar searchQuery='' onSearchChange={() => {}} />
+      <div className="container mx-auto px-4 py-5 lg:py-15">
         <div className="flex gap-8">
 
           {/* Lista ordini */}
-          <div className={`flex-1 transition-all duration-300 ${showDetail ? 'max-w-1/3' : 'max-w-full'}`}>
+          <div className={`flex-1 transition-all duration-300 ${
+            showDetail ? 'hidden md:block md:max-w-1/3' : 'max-w-full'
+          }`}>
             <h2 className="text-xl font-semibold mb-4">Cronologia ordini</h2>
             <div className="space-y-4">
               {orders.map((order) => (
@@ -53,19 +55,26 @@ export default function OrdersPage() {
 
           {/* Dettaglio ordine */}
           {showDetail && selectedOrder && (
-            <div className="w-full max-w-2/3">
-              <div className="sticky top-4">
-                <button
-                  onClick={() => {
-                    setShowDetail(false);
-                    setSelectedOrder(null);
-                  }}
-                  className="flex items-center gap-2 text-gray-600 mb-4 md:hidden"
-                >
-                  <span>Torna agli ordini</span>
-                </button>
+            <div className={`fixed md:relative inset-0 md:inset-auto z-50 md:z-auto bg-white md:bg-transparent md:w-full md:max-w-2/3 ${
+              showDetail ? 'translate-x-0' : 'translate-x-full'
+            } transition-transform duration-300`}>
+              <div className="h-full md:h-auto overflow-y-auto">
+                <div className="sticky top-0 bg-white md:bg-transparent border-b md:border-b-0 border-gray-200 p-4 mb-4 md:p-0">
+                  <button
+                    onClick={() => {
+                      setShowDetail(false);
+                      setSelectedOrder(null);
+                    }}
+                    className="flex items-center gap-2 text-gray-600 cursor-pointer"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span>Torna agli ordini</span>
+                  </button>
+                </div>
 
-                <div className="p-6 special-rounded border border-gray-200 bg-white">
+                <div className="p-4 md:p-6 md:special-rounded md:border md:border-gray-200 md:bg-white md:rounded-xl">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="relative w-20 h-20">
                       <img

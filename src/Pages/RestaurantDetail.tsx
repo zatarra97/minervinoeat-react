@@ -62,7 +62,7 @@ export default function RestaurantDetail() {
 
   if (!restaurant) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen md:bg-gray-50">
         <Navbar isSticky={false} searchQuery={''} onSearchChange={() => {}} />
         <div className="flex flex-col items-center justify-center p-4">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Ristorante non trovato</h2>
@@ -79,7 +79,7 @@ export default function RestaurantDetail() {
     }`}>
       <div className="bg-white p-4 rounded-lg shadow-sm h-full overflow-y-auto py-5 border border-gray-200">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-center w-full mt-3">Il tuo ordine</h2>
+          <h2 className="text-xl font-semibold text-center w-full md:mt-3 md:text-2xl">Il tuo ordine</h2>
           {isCartOpen && (
             <button onClick={() => setIsCartOpen(false)} className="text-gray-500 text-xl cursor-pointer">
               <FontAwesomeIcon icon={faTimes} />
@@ -122,9 +122,9 @@ export default function RestaurantDetail() {
           <p className="text-gray-500 text-center">Il carrello è vuoto</p>
         ) : (
           <>
-            <div className="space-y-4 mb-4">
+            <div className="space-y-2 mb-4">
               {cart.map((item) => (
-                <div key={item.name} className="flex justify-between items-center">
+                <div key={item.name} className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <div>
                     <h3 className="font-medium text-lg">{item.name}</h3>
                     <p className="text-base text-gray-500">€{item.price.toFixed(2)}</p>
@@ -151,7 +151,7 @@ export default function RestaurantDetail() {
                 </div>
               ))}
             </div>
-            <div className="border-t pt-4">
+            <div className="border-t pt-4 -mt-4">
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Subtotale</span>
@@ -189,7 +189,7 @@ export default function RestaurantDetail() {
         {isCartOpen && (
           <button
             onClick={() => setIsCartOpen(false)}
-            className="fixed bottom-0 left-0 right-0 bg-orange-500 text-white py-4 text-center cursor-pointer font-semibold text-lg"
+            className="fixed bottom-0 left-0 right-0 bg-orange-300 text-white py-4 text-center cursor-pointer font-semibold text-lg"
           >
             Aggiungi altri articoli
           </button>
@@ -199,7 +199,7 @@ export default function RestaurantDetail() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 back-repeat">
+    <div className="min-h-screen md:bg-gray-50 back-repeat">
       <Navbar isSticky={false} searchQuery={''} onSearchChange={() => {}} />
 
       {/* Contenuto principale */}
@@ -207,31 +207,23 @@ export default function RestaurantDetail() {
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             {/* Immagine di copertina */}
-            <div className="relative h-[250px] lg:h-[300px] special-rounded  overflow-hidden mb-4 border border-gray-200">
+            <div className="relative h-[250px] lg:h-[300px] special-rounded overflow-hidden mb-4  shadow-lg">
               <img
                 src={restaurant.image}
                 alt={restaurant.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover shadow-lg"
               />
             </div>
 
             {/* Informazioni principali */}
-            <div className="bg-white rounded-lg shadow-sm p-4 lg:p-6 mb-8 border border-gray-200">
+            <div className="bg-white rounded-lg md:shadow-sm p-4 lg:p-6 mb-8 md:border border-gray-200">
               <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                 <div>
                   <h1 className="text-3xl font-bold text-gray-800 mb-2">{restaurant.name}</h1>
                   <div className="flex items-center gap-4 text-base text-gray-600">
                     <div className="flex items-center">
-                      <FontAwesomeIcon icon={faStar} className="text-yellow-400 mr-1" />
-                      <span className="font-medium">{restaurant.rating}</span>
-                      <span className="ml-1">({restaurant.reviewCount} recensioni)</span>
-                    </div>
-                    <div className="flex items-center">
                       <FontAwesomeIcon icon={faClock} className="text-orange-500 mr-1" />
                       <span>{restaurant.deliveryTime}</span>
-                    </div>
-                    <div>
-                      <span className="font-medium">{restaurant.distance}</span>
                     </div>
                   </div>
                 </div>
@@ -256,7 +248,7 @@ export default function RestaurantDetail() {
                           <div>
                             <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
                             <p className="text-gray-600 text-base mt-1">{item.description}</p>
-                            <p className="text-orange-500 font-medium mt-2">€{item.price.toFixed(2)}</p>
+                            <p className="text-orange-500 font-medium">€{item.price.toFixed(2)}</p>
                           </div>
                           <button
                             onClick={() => addToCart(item)}
