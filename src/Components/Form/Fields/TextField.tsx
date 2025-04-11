@@ -7,6 +7,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   register?: UseFormRegister<any>;
   name: string;
   value?: string;
+  isLoading?: boolean;
 }
 
 export const TextField: React.FC<TextFieldProps> = ({ 
@@ -17,8 +18,18 @@ export const TextField: React.FC<TextFieldProps> = ({
   type = "text",
   value,
   disabled,
+  isLoading = false,
   ...props 
 }) => {
+  if (isLoading) {
+    return (
+      <div className="space-y-1">
+        <div className="h-5 bg-gray-200 rounded w-20 mb-1 animate-pulse"></div>
+        <div className="h-12 bg-gray-200 special-rounded w-full animate-pulse"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-1">
       <label className="block text-sm font-medium text-gray-700 pl-5">
