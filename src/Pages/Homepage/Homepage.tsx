@@ -24,7 +24,7 @@ export default function Homepage() {
           <div className="md:w-64 flex-shrink-0">
             <div className="sticky top-[84px]">
               <CategoryFilter
-                categories={categories.map(c => c.name)}
+                categories={categories}
                 selectedCategory={selectedCategory}
                 onSelectCategory={setSelectedCategory}
                 searchQuery={searchQuery}

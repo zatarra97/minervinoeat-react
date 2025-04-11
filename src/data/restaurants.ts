@@ -10,10 +10,8 @@ export const categories: Category[] = [
   { id: 'pizzeria', name: 'Pizzeria', icon: '🍕' },
   { id: 'pasta', name: 'Pasta', icon: '🍝' },
   { id: 'burger', name: 'Hamburger', icon: '🍔' },
-  { id: 'sushi', name: 'Sushi', icon: '🍣' },
   { id: 'healthy', name: 'Healthy', icon: '🥗' },
   { id: 'dessert', name: 'Dessert', icon: '🍰' },
-  { id: 'drinks', name: 'Bevande', icon: '🍹' },
   { id: 'vegetarian', name: 'Vegetariano', icon: '🥦' }
 ];
 

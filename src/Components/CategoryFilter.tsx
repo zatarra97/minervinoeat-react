@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Category } from '../data/restaurants';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { SearchBar } from './SearchBar';
+import { logger } from '../utils/logger';
+import { Category } from '../data/restaurants';
 
 interface CategoryFilterProps {
-  categories: string[];
+  categories: Category[];
   selectedCategory: string | null;
   onSelectCategory: (category: string | null) => void;
   searchQuery: string;
@@ -20,6 +21,17 @@ export const CategoryFilter = ({
   onSearchChange
 }: CategoryFilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleCategorySelect = (categoryId: string | null) => {
+    logger.info('Categoria selezionata:', categoryId);
+    onSelectCategory(categoryId);
+    setIsOpen(false);
+  };
+
+  const handleSearchChange = (query: string) => {
+    logger.info('Ricerca modificata:', query);
+    onSearchChange(query);
+  };
 
   return (
     <div className="bg-white special-rounded border border-gray-200 p-4">
@@ -50,17 +62,14 @@ export const CategoryFilter = ({
       >
         {/* Barra di ricerca */}
         <div className="px-2 mt-2">
-          <SearchBar value={searchQuery} onChange={onSearchChange} />
+          <SearchBar value={searchQuery} onChange={handleSearchChange} />
         </div>
 
         {/* Categorie */}
         <div>
           <div className="space-y-2">
             <button
-              onClick={() => {
-                onSelectCategory(null);
-                setIsOpen(false);
-              }}
+              onClick={() => handleCategorySelect(null)}
               className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                 selectedCategory === null
                   ? 'bg-orange-50 text-orange-600 font-medium'
@@ -71,18 +80,16 @@ export const CategoryFilter = ({
             </button>
             {categories.map((category) => (
               <button
-                key={category}
-                onClick={() => {
-                  onSelectCategory(category);
-                  setIsOpen(false);
-                }}
-                className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                  selectedCategory === category
+                key={category.id}
+                onClick={() => handleCategorySelect(category.id)}
+                className={`w-full text-left px-4 py-2 rounded-lg transition-colors cursor-pointer ${
+                  selectedCategory === category.id
                     ? 'bg-orange-50 text-orange-600 font-medium'
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
-                {category}
+                <span className="mr-2">{category.icon}</span>
+                {category.name}
               </button>
             ))}
           </div>
