@@ -1,10 +1,23 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faEuroSign, faShoppingCart, faPlus, faMinus, faTrash, faTimes, faBicycle, faStore } from '@fortawesome/free-solid-svg-icons';
-import { restaurants } from '../data/restaurants';
-import { useState } from 'react';
-import { MenuItem } from '../types/restaurant';
+import { useState, useEffect, useRef } from 'react';
+import { MenuItem, MenuCategory } from '../types/restaurant';
 import { Navbar } from '../Components/Navbar/Navbar';
+import { getPublicMerchantInfo, getMerchantMenu } from '../services/api-utility';
+import { logger } from '../utils/logger';
+
+interface Restaurant {
+  id: string;
+  slug: string;
+  name: string;
+  coverImageUrl: string;
+  estimatedDeliveryTime: string;
+  deliveryCost: number;
+  minOrderAmount: string;
+  deliveryEnabled: number;
+  pickupEnabled: number;
+}
 
 interface CartItem extends MenuItem {
   quantity: number;
@@ -14,18 +27,60 @@ type DeliveryType = 'delivery' | 'pickup';
 
 export default function RestaurantDetail() {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const restaurant = restaurants.find(r => r.id === id);
+  const { slug } = useParams();
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [menu, setMenu] = useState<MenuCategory[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [deliveryType, setDeliveryType] = useState<DeliveryType>('delivery');
+  const restaurantDataRef = useRef<Restaurant | null>(null);
+  const isFetching = useRef(false);
+
+  useEffect(() => {
+    const fetchRestaurantData = async () => {
+      logger.info('fetchRestaurantData', slug);
+      if (!slug || isFetching.current) return;
+      
+      if (restaurantDataRef.current?.slug === slug) {
+        setRestaurant(restaurantDataRef.current);
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        isFetching.current = true;
+        const [restaurantData, menuData] = await Promise.all([
+          getPublicMerchantInfo(slug),
+          getMerchantMenu(slug)
+        ]);
+        
+        restaurantDataRef.current = restaurantData;
+        setRestaurant(restaurantData);
+        setMenu(menuData);
+        
+        if (restaurantData.deliveryEnabled === 1) {
+          setDeliveryType('delivery');
+        } else if (restaurantData.pickupEnabled === 1) {
+          setDeliveryType('pickup');
+        }
+      } catch (error) {
+        console.error('Errore nel caricamento dei dati:', error);
+      } finally {
+        setIsLoading(false);
+        isFetching.current = false;
+      }
+    };
+
+    fetchRestaurantData();
+  }, [slug]);
 
   const addToCart = (item: MenuItem) => {
     setCart(currentCart => {
-      const existingItem = currentCart.find(cartItem => cartItem.name === item.name);
+      const existingItem = currentCart.find(cartItem => cartItem.id === item.id);
       if (existingItem) {
         return currentCart.map(cartItem =>
-          cartItem.name === item.name
+          cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -34,23 +89,25 @@ export default function RestaurantDetail() {
     });
   };
 
-  const removeFromCart = (itemName: string) => {
+  const removeFromCart = (itemId: number) => {
     setCart(currentCart => {
-      const existingItem = currentCart.find(cartItem => cartItem.name === itemName);
+      const existingItem = currentCart.find(cartItem => cartItem.id === itemId);
       if (existingItem && existingItem.quantity > 1) {
         return currentCart.map(cartItem =>
-          cartItem.name === itemName
+          cartItem.id === itemId
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         );
       }
-      return currentCart.filter(cartItem => cartItem.name !== itemName);
+      return currentCart.filter(cartItem => cartItem.id !== itemId);
     });
   };
 
-  const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  const cartTotal = cart.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
 
   const handleProceedToCheckout = () => {
+    if (!restaurant) return;
+    
     navigate('/conferma-ordine', {
       state: {
         restaurant,
@@ -59,6 +116,25 @@ export default function RestaurantDetail() {
       }
     });
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen md:bg-gray-50">
+        <Navbar isSticky={false} />
+        <div className="container mx-auto px-4 py-8">
+          <div className="animate-pulse">
+            <div className="h-64 bg-gray-200 special-rounded mb-6"></div>
+            <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+            <div className="space-y-4">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="h-32 bg-gray-200 rounded"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!restaurant) {
     return (
@@ -77,7 +153,7 @@ export default function RestaurantDetail() {
         ? 'fixed inset-0 z-50 overflow-y-auto bg-white' 
         : 'hidden lg:block lg:sticky lg:top-4'
     }`}>
-      <div className="bg-white p-4 rounded-lg shadow-sm h-full overflow-y-auto py-5 border border-gray-200">
+      <div className="bg-white p-4 lg:p-6 rounded-xl shadow-sm h-full overflow-y-auto py-5 border border-gray-200">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-center w-full md:mt-3 md:text-2xl">Il tuo ordine</h2>
           {isCartOpen && (
@@ -88,34 +164,32 @@ export default function RestaurantDetail() {
         </div>
 
         <div className="flex gap-2 mb-6">
-          <button
-            onClick={() => setDeliveryType('delivery')}
-            className={`flex-1 py-2 px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer ${
-              deliveryType === 'delivery'
-                ? 'btn btn-orange'
-                : 'btn btn-gray'
-            }`}
-          >
-            <FontAwesomeIcon icon={faBicycle} />
-            <span>Consegna</span>
-            <span className="text-base">
-              {deliveryType === 'delivery'}
-            </span>
-          </button>
-          <button
-            onClick={() => setDeliveryType('pickup')}
-            className={`flex-1 py-2 px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer ${
-              deliveryType === 'pickup'
-                ? 'btn btn-orange'
-                : 'btn btn-gray'
-            }`}
-          >
-            <FontAwesomeIcon icon={faStore} />
-            <span>Ritiro</span>
-            <span className="text-base">
-              {deliveryType === 'pickup' }
-            </span>
-          </button>
+          {restaurant.deliveryEnabled === 1 && (
+            <button
+              onClick={() => setDeliveryType('delivery')}
+              className={`flex-1 py-2 px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer ${
+                deliveryType === 'delivery'
+                  ? 'btn btn-orange'
+                  : 'btn btn-gray'
+              }`}
+            >
+              <FontAwesomeIcon icon={faBicycle} />
+              <span>Consegna</span>
+            </button>
+          )}
+          {restaurant.pickupEnabled === 1 && (
+            <button
+              onClick={() => setDeliveryType('pickup')}
+              className={`flex-1 py-2 px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer ${
+                deliveryType === 'pickup'
+                  ? 'btn btn-orange'
+                  : 'btn btn-gray'
+              }`}
+            >
+              <FontAwesomeIcon icon={faStore} />
+              <span>Ritiro</span>
+            </button>
+          )}
         </div>
         
         {cart.length === 0 ? (
@@ -124,14 +198,14 @@ export default function RestaurantDetail() {
           <>
             <div className="space-y-2 mb-4">
               {cart.map((item) => (
-                <div key={item.name} className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <div>
-                    <h3 className="font-medium text-lg">{item.name}</h3>
-                    <p className="text-base text-gray-500">€{item.price.toFixed(2)}</p>
+                <div key={item.id} className="flex justify-between items-center border-b border-gray-200 pb-2">
+                  <div className="pr-2">
+                    <h3 className="font-medium text-base">{item.name}</h3>
+                    <p className="text-base text-gray-500">€{parseFloat(item.price).toFixed(2)}</p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center md:gap-2">
                     <button
-                      onClick={() => removeFromCart(item.name)}
+                      onClick={() => removeFromCart(item.id)}
                       className="btn-small btn-orange-wire"
                     >
                       {item.quantity > 1 ? 
@@ -157,28 +231,30 @@ export default function RestaurantDetail() {
                   <span className="text-gray-600">Subtotale</span>
                   <span className="font-medium">€{cartTotal.toFixed(2)}</span>
                 </div>
-                {deliveryType === 'delivery' && (
+                {restaurant.deliveryEnabled === 1 && deliveryType === 'delivery' && restaurant.deliveryCost && (
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Consegna</span>
-                    <span className="font-medium">{restaurant.deliveryFee}</span>
+                    <span className="font-medium">
+                      {restaurant.deliveryCost > 0 ? `€${restaurant.deliveryCost}` : 'gratis'}
+                    </span>
                   </div>
                 )}
                 <div className="flex justify-between items-center text-lg font-bold">
                   <span>Totale</span>
-                  <span>€{(cartTotal + (deliveryType === 'delivery' ? parseFloat(restaurant.deliveryFee.replace('€', '')) : 0)).toFixed(2)}</span>
+                  <span>€{(cartTotal + (deliveryType === 'delivery' && restaurant.deliveryCost ? parseFloat(restaurant.deliveryCost.toString()) : 0)).toFixed(2)}</span>
                 </div>
               </div>
               <button 
                 className={`w-full btn btn-orange text-xl mb-15 lg:mb-0 ${
-                  cartTotal < restaurant.minOrder && deliveryType === 'delivery'
+                  deliveryType === 'delivery' && restaurant.minOrderAmount && cartTotal < parseFloat(restaurant.minOrderAmount)
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
                 }`}
-                disabled={cartTotal < restaurant.minOrder && deliveryType === 'delivery'}
+                disabled={deliveryType === 'delivery' && restaurant.minOrderAmount ? cartTotal < parseFloat(restaurant.minOrderAmount) : false}
                 onClick={handleProceedToCheckout}
               >
-                {cartTotal < restaurant.minOrder && deliveryType === 'delivery' 
-                  ? `Ordine minimo €${restaurant.minOrder.toFixed(2)}`
+                {deliveryType === 'delivery' && restaurant.minOrderAmount && cartTotal < parseFloat(restaurant.minOrderAmount)
+                  ? `Ordine minimo €${parseFloat(restaurant.minOrderAmount).toFixed(2)}`
                   : 'Procedi all\'ordine'
                 }
               </button>
@@ -207,52 +283,56 @@ export default function RestaurantDetail() {
         <div className="grid lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             {/* Immagine di copertina */}
-            <div className="relative h-[250px] lg:h-[300px] special-rounded overflow-hidden mb-4  shadow-lg">
+            <div className="relative h-[250px] lg:h-[300px] special-rounded overflow-hidden mb-4 shadow-lg">
               <img
-                src={restaurant.image}
+                src={restaurant.coverImageUrl}
                 alt={restaurant.name}
                 className="w-full h-full object-cover shadow-lg"
               />
             </div>
 
             {/* Informazioni principali */}
-            <div className="bg-white rounded-lg md:shadow-sm p-4 lg:p-6 mb-8 md:border border-gray-200">
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div className="mb-8 px-2 lg:px-0">
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:shadow-sm p-4 md:p-6 md:border md:border-gray-200 md:rounded-xl bg-white">
                 <div>
                   <h1 className="text-3xl font-bold text-gray-800 mb-2">{restaurant.name}</h1>
                   <div className="flex items-center gap-4 text-base text-gray-600">
                     <div className="flex items-center">
                       <FontAwesomeIcon icon={faClock} className="text-orange-500 mr-1" />
-                      <span>{restaurant.deliveryTime}</span>
+                      <span>{restaurant.estimatedDeliveryTime}</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <div className="text-base text-gray-600 mb-1">
-                    Ordine minimo: <FontAwesomeIcon icon={faEuroSign} className="text-gray-500" /> {restaurant.minOrder}
-                  </div>
-                  <div className="text-base text-gray-600">
-                    Consegna: {restaurant.deliveryFee}
-                  </div>
+                  {restaurant.minOrderAmount && (
+                    <div className="text-base text-gray-600 mb-1">
+                      Ordine minimo: €{restaurant.minOrderAmount === '0' ? 'gratis' : restaurant.minOrderAmount}
+                    </div>
+                  )}
+                  {restaurant.deliveryEnabled === 1 && restaurant.deliveryCost && (
+                    <div className="text-base text-gray-600">
+                      Consegna: {restaurant.deliveryCost > 0 ? `€${restaurant.deliveryCost}` : 'gratis'}
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Menu */}
-              <div className="space-y-8">
-                {restaurant.menu.map((category, index) => (
-                  <div key={index}>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">{category.category}</h2>
+              <div className="mb-4 lg:mb-8">
+                {menu.map(category => (
+                  <div key={category.name} className="mb-4 md:shadow-sm p-4 md:p-6 md:border md:border-gray-200 rounded-xl bg-white">
+                    <h2 className="text-2xl font-bold text-orange-500 mb-4">{category.name}</h2>
                     <div className="space-y-4">
-                      {category.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex justify-between items-start p-4 bg-gray-50 rounded-lg  border border-gray-200">
-                          <div>
-                            <h3 className="font-semibold text-gray-800 text-lg">{item.name}</h3>
-                            <p className="text-gray-600 text-base mt-1">{item.description}</p>
-                            <p className="text-orange-500 font-medium">€{item.price.toFixed(2)}</p>
+                      {category.items.map(item => (
+                        <div key={item.id} className="flex justify-between items-center border-b border-gray-200 pb-2">
+                          <div className="pr-2">
+                            <h3 className="font-medium text-lg">{item.name}</h3>
+                            <h3 className="text-base text-gray-500">{item.description}</h3>
+                            <p className="text-base text-gray-500">€{parseFloat(item.price).toFixed(2)}</p>
                           </div>
                           <button
                             onClick={() => addToCart(item)}
-                            className="btn-small btn-orange text-center"
+                            className="btn-small btn-orange-wire"
                           >
                             <FontAwesomeIcon icon={faPlus} />
                           </button>

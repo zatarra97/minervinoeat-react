@@ -8,6 +8,8 @@ interface DeliveryTimeStepProps {
   onTimeSelect: (time: string) => void;
   onNext: () => void;
   onBack: () => void;
+  onNotesChange: (notes: string) => void;
+  notes: string;
 }
 
 export const DeliveryTimeStep: React.FC<DeliveryTimeStepProps> = ({
@@ -15,7 +17,9 @@ export const DeliveryTimeStep: React.FC<DeliveryTimeStepProps> = ({
   selectedTime,
   onTimeSelect,
   onNext,
-  onBack
+  onBack,
+  onNotesChange,
+  notes
 }) => {
   // Imposta la localizzazione italiana
   moment.locale('it');
@@ -47,7 +51,22 @@ export const DeliveryTimeStep: React.FC<DeliveryTimeStepProps> = ({
     <form onSubmit={handleSubmit} className="container bg-white rounded-lg border border-gray-200 mx-auto p-4">
       <div className="space-y-6">
         <div className="bg-white rounded-lg p-2 md:p-6">
-          <h3 className="text-lg font-semibold mb-4">
+          <h3 className="text-lg font-semibold my-4">
+            Note per l'ordine (facoltativo)
+          </h3>
+          
+
+          <div className="mt-4">
+              <textarea
+                value={notes}
+                onChange={(e) => onNotesChange(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
+                rows={3}
+                placeholder="Es. Tagliare le pizze a fette, portare il resto per..."
+              />
+            </div>
+
+          <h3 className="text-lg font-semibold my-4">
             Seleziona l'orario di {deliveryType === 'delivery' ? 'consegna' : 'ritiro'}
           </h3>
 

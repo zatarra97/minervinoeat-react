@@ -1,15 +1,16 @@
 import React from 'react';
 import { Restaurant } from '../../../types/restaurant';
-import { PersonalDetailsFormData } from '../../Pages/OrderConfirmation';
-
+import { PersonalDetailsFormData } from '../OrderConfirmation';
 interface OrderSummaryStepProps {
   restaurant: Restaurant;
   cartItems: Array<{ name: string; quantity: number; price: number; }>;
   personalDetails: PersonalDetailsFormData;
   deliveryType: 'delivery' | 'pickup';
   selectedTime: string;
+  notes: string;
   onBack: () => void;
   onConfirm: () => void;
+  isSubmitting?: boolean;
 }
 
 export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
@@ -18,11 +19,13 @@ export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
   personalDetails,
   deliveryType,
   selectedTime,
+  notes,
   onBack,
-  onConfirm
+  onConfirm,
+  isSubmitting
 }) => {
   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const deliveryFee = deliveryType === 'delivery' ? parseFloat(restaurant.deliveryFee.replace('€', '')) : 0;
+  const deliveryFee = deliveryType === 'delivery' ? parseFloat(restaurant.deliveryCost.toString()) : 0;
   const total = subtotal + deliveryFee;
 
   return (
@@ -85,6 +88,14 @@ export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
               </div>
             </div>
 
+            {/* Note */}
+            {notes && (
+              <div>
+                <h4 className="font-semibold mb-2">Note per l'ordine</h4>
+                <p className="text-gray-600">{notes}</p>
+              </div>
+            )}
+
             {/* Totale */}
             <div className="border-t pt-4">
               <div className="space-y-2">
@@ -95,7 +106,7 @@ export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
                 {deliveryType === 'delivery' && (
                   <div className="flex justify-between">
                     <span>Consegna</span>
-                    <span>{restaurant.deliveryFee}</span>
+                    <span>{parseFloat(restaurant.deliveryCost.toString()) === 0 ? 'gratis' : `€${restaurant.deliveryCost}`}</span>
                   </div>
                 )}
                 <div className="flex justify-between font-bold text-lg">
@@ -112,6 +123,7 @@ export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
             type="button"
             onClick={onBack}
             className="btn btn-gray"
+            disabled={isSubmitting}
           >
             Indietro
           </button>
@@ -119,8 +131,9 @@ export const OrderSummaryStep: React.FC<OrderSummaryStepProps> = ({
             type="button"
             onClick={onConfirm}
             className="btn btn-orange"
+            disabled={isSubmitting}
           >
-            Conferma ordine
+            {isSubmitting ? 'Conferma in corso...' : 'Conferma ordine'}
           </button>
         </div>
       </div>

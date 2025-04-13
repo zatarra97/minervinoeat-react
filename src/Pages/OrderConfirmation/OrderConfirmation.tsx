@@ -7,6 +7,8 @@ import { OrderSummaryStep } from './OrderSteps/OrderSummaryStep'
 import { Restaurant } from '../../types/restaurant';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { createOrder } from '../../services/api-utility';
+import { toast } from 'react-toastify';
 
 interface LocationState {
   restaurant: Restaurant;
@@ -18,8 +20,6 @@ export interface PersonalDetailsFormData {
   street: string;
   number: string;
   floor?: string;
-  city: string;
-  cap: string;
   intercom?: string;
   name: string;
   phone: string;
@@ -35,14 +35,14 @@ export default function OrderConfirmation() {
     street: '',
     number: '',
     floor: '',
-    city: '',
-    cap: '',
     intercom: '',
     name: '',
     phone: ''
   });
   const [selectedTime, setSelectedTime] = useState('asap');
+  const [notes, setNotes] = useState('');
   const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePersonalDetailsChange = (data: Partial<PersonalDetailsFormData>) => {
     setPersonalDetails(prev => ({ ...prev, ...data }));
@@ -60,21 +60,54 @@ export default function OrderConfirmation() {
     setCurrentStep(prev => prev - 1);
   };
 
-  const handleConfirmOrder = () => {
-    // Qui implementeremo la logica per inviare l'ordine al backend
-    console.log('Ordine confermato:', {
-      restaurant,
-      cartItems,
-      personalDetails,
-      deliveryType,
-      selectedTime
-    });
-    
-    setOrderConfirmed(true);
+  const handleNotesChange = (newNotes: string) => {
+    setNotes(newNotes);
+  };
+
+  const handleConfirmOrder = async () => {
+    try {
+      setIsSubmitting(true);
+
+      // Calcola il totale
+      const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+      const deliveryFee = deliveryType === 'delivery' ? parseFloat(restaurant.deliveryCost.toString()) : 0;
+      const total = subtotal + deliveryFee;
+
+      // Formatta la data e l'ora
+      const scheduledAt = selectedTime === 'asap' 
+        ? new Date() 
+        : new Date(`${new Date().toISOString().split('T')[0]}T${selectedTime}`);
+
+      // Prepara i dati per l'API
+      const orderData = {
+        total,
+        delivery: deliveryType === 'delivery',
+        deliveryCost: deliveryFee,
+        scheduledAt: scheduledAt.toISOString(),
+        notes,
+        summary: cartItems,
+        userInfo: {
+          ...personalDetails,
+          deliveryType
+        },
+        merchantSlug: restaurant.slug
+      };
+
+      // Chiama l'API
+      await createOrder(orderData);
+      
+      setOrderConfirmed(true);
+      toast.success('Ordine confermato con successo!');
+    } catch (error) {
+      console.error('Errore nella creazione dell\'ordine:', error);
+      toast.error('Si è verificato un errore durante la conferma dell\'ordine');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBackToRestaurant = () => {
-    navigate(`/dettaglio/${restaurant.id}`, {
+    navigate(`/dettaglio/${restaurant.slug}`, {
       state: {
         cartItems,
         deliveryType
@@ -133,6 +166,8 @@ export default function OrderConfirmation() {
                     onTimeSelect={handleTimeSelect}
                     onNext={handleNext}
                     onBack={handleBack}
+                    onNotesChange={handleNotesChange}
+                    notes={notes}
                   />
                 )}
 
@@ -143,8 +178,10 @@ export default function OrderConfirmation() {
                     personalDetails={personalDetails}
                     deliveryType={deliveryType}
                     selectedTime={selectedTime}
+                    notes={notes}
                     onBack={handleBack}
                     onConfirm={handleConfirmOrder}
+                    isSubmitting={isSubmitting}
                   />
                 )}
               </div>

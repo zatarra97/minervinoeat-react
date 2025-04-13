@@ -113,7 +113,71 @@ export const getList = async (
   }
 };
 
-// Dettaglio dell'entità
+/*------ GESTIONE API (User) ------*/
+
+// Lista dei ristoranti pubblici
+export const getPublicMerchantsList = async (day: string): Promise<any> => {
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/public/merchants/open?day=${day}`);
+    return response.data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.error('Error:', axiosError.response?.data);
+    }
+    throw error;
+  }
+};
+
+// Dettaglio Ristorante
+export const getPublicMerchantInfo = async (slug: string): Promise<any> => {
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/public/merchants/${slug}`);
+    return response.data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.error('Error:', axiosError.response?.data);
+    }
+    throw error;
+  }
+};
+
+//Menu del ristorante
+export const getMerchantMenu = async (slug: string): Promise<any> => {
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/public/merchants/${slug}/menu`);
+    return response.data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.error('Error:', axiosError.response?.data);
+    }
+    throw error;
+  }
+};
+
+//Prenotazione
+export const createOrder = async (data: any): Promise<any> => {
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/orders`, data, getConfig());
+    return response.data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.error('Error:', axiosError.response?.data?.error?.message || axiosError.message);
+      if (axiosError.response?.status === 401) {
+        sessionExpired();
+      }
+    }
+    throw error;
+  }
+};
+
+/* ---------------------------------------------- */
+
+/* GESTIONE RISTORANTI PRIVATI */
+// Dettaglio entità
 export const getItem = async (entity: string, id: string): Promise<any> => {
   try {
     const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/${entity}/${id}`, getConfig());

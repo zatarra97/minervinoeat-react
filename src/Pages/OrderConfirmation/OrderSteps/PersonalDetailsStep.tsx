@@ -53,7 +53,7 @@ export function PersonalDetailsStep({ formData, onChange, onNext, deliveryType }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-sm">
+    <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
       <h2 className="text-xl font-bold text-gray-800 mb-6">Dettagli personali</h2>
 
       <div className="space-y-6">

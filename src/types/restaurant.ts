@@ -1,23 +1,27 @@
 export interface Restaurant {
   id: string;
+  slug: string;
   name: string;
-  image: string;
-  deliveryTime: string;
-  deliveryFee: string;
-  minOrder: number;
-  category: string;
-  menu: MenuCategory[];
+  coverImageUrl: string;
+  estimatedDeliveryTime: string;
+  deliveryCost: string;
+  minOrderAmount: string;
+  deliveryEnabled: number;
+  pickupEnabled: number;
+  category?: string;
+  menu?: any; // TODO: Definire il tipo corretto per il menu
 }
 
 export interface MenuCategory {
-  category: string;
+  name: string;
   items: MenuItem[];
 }
 
 export interface MenuItem {
+  id: number;
   name: string;
   description: string;
-  price: number;
-  image: string;
+  price: string;
+  imgUrl: string | null;
 }
 

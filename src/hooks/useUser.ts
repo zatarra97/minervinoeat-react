@@ -68,7 +68,7 @@ export const useUser = () => {
           const email = cognitoUser.getUsername();
           logger.info('email', email);
           if (email) {
-            const userData = await getItem('users', `email/${email}`);
+            const userData = await getItem('users', `me`);
             userCache = userData;
             notifyListeners(userData);
             setUser(userData);
